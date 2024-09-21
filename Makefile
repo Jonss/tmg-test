@@ -9,3 +9,6 @@ remove: stop
 
 run: remove build
 	docker run -d -p 8080:80 --name form-example form-lib
+
+test:
+	./vendor/bin/phpunit tests

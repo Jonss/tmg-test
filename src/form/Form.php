@@ -30,7 +30,7 @@ class Form {
      * returns the value of the input by $name
      */
     public function getValue($name) {
-        return $this->inputs[$name];
+        return isset($this->_inputs[$name]) ? $this->_inputs[$name]->getValue() : null;
     }
 
     /**
