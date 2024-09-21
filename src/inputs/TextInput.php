@@ -1,5 +1,5 @@
 <?php
-include 'Input.php';
+include_once 'Input.php';
 
 class TextInput extends Input {
 
