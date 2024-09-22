@@ -35,6 +35,9 @@ abstract class Input {
      * returns the current value managed by this input
      */
     public function getValue() {
+       if(isset($_POST[$this->_name])) {
+            return $_POST[$this->_name];
+       }
        return $this->_initVal;
     }
 }
