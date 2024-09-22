@@ -10,14 +10,14 @@ class Form {
     /**
      *  adds an input instance to the collection of inputs managed by this form object
      */
-    public function addInput(Input $input) {
+    public function addInput(Input $input): void {
         $this->_inputs[$input->name()] = $input;
     }
 
     /**
      *  iterates over all inputs managed by this form and returns false if any of them don't validate
      */
-    public function validate() {
+    public function validate(): bool {
         foreach ($this->_inputs as $input) {
             if (!$input->validate()) {
                 return false;
@@ -29,7 +29,7 @@ class Form {
     /**
      * returns the value of the input by $name
      */
-    public function getValue($name) {
+    public function getValue($name): ?string {
         return isset($this->_inputs[$name]) ? $this->_inputs[$name]->getValue() : null;
     }
 
