@@ -1,23 +1,23 @@
 <?php
 abstract class Input {
-    protected $_name;
-    protected $_label;
-    protected $_initVal;
+    protected $name;
+    protected $label;
+    protected $initVal;
 
     abstract public function validate(): bool;
-    abstract protected function _renderSetting(): string;
+    abstract protected function renderSetting(): string;
 
     public function __construct($name, $label, $initVal) {
-        $this->_name = $name;
-        $this->_label = $label;
-        $this->_initVal = $initVal;
+        $this->name = $name;
+        $this->label = $label;
+        $this->initVal = $initVal;
     }
 
     /**
      * returns the name of this input
      */
     public function name(): string {
-        return $this->_name;
+        return $this->name;
     }
 
     /**
@@ -26,8 +26,8 @@ abstract class Input {
      */
     public function render(): string {
         return '<div>'
-            . '<label for="' . $this->_name . '">' . $this->_label . '</label>'
-            . $this->_renderSetting()
+            . '<label for="' . $this->name . '">' . $this->label . '</label>'
+            . $this->renderSetting()
             . '</div>';
     }
 
@@ -35,9 +35,9 @@ abstract class Input {
      * returns the current value managed by this input
      */
     public function getValue(): string {
-       if(isset($_POST[$this->_name])) {
-            return $_POST[$this->_name];
+       if(isset($_POST[$this->name])) {
+            return $_POST[$this->name];
        }
-       return $this->_initVal;
+       return $this->initVal;
     }
 }

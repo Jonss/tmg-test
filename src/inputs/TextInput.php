@@ -7,14 +7,14 @@ class TextInput extends Input {
      * validates if initVal is empty
      */
     public function validate(): bool {
-        return !empty($this->_initVal);
+        return !empty($this->initVal);
     }
 
      /**
      * returns a text input
      */
-    protected function _renderSetting(): string {
-        return '<input type="text" name="' . $this->_name . '" value="' . $this->_initVal . '" />';
+    protected function renderSetting(): string {
+        return '<input type="text" name="' . $this->name . '" value="' . $this->initVal . '" />';
     }
 
 }
