@@ -4,9 +4,11 @@ include_once 'src/inputs/TextInput.php';
 
 use PHPUnit\Framework\TestCase;
 
-final class TextInputTest extends TestCase {
+final class TextInputTest extends TestCase 
+{
     
-    public function testValidateEmptyInputValue() {
+    public function testValidateEmptyInputValue() 
+    {
         $arg = new TextInput("my_field", "My field", "");
 
         $expectedRender = '<div><label for="my_field">My field</label><input type="text" name="my_field" value="" /></div>';
@@ -19,7 +21,8 @@ final class TextInputTest extends TestCase {
         $this->assertSame($expectedName, $arg->name());
     }
 
-    public function testValidateCompletedInputValue() {
+    public function testValidateCompletedInputValue() 
+    {
         $arg = new TextInput("name", "Name", "Jupiter");
 
         $expectedRender = '<div><label for="name">Name</label><input type="text" name="name" value="Jupiter" /></div>';

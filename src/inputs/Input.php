@@ -7,7 +7,8 @@ abstract class Input {
     abstract public function validate(): bool;
     abstract protected function renderSetting(): string;
 
-    public function __construct($name, $label, $initVal) {
+    public function __construct($name, $label, $initVal) 
+    {
         $this->name = $name;
         $this->label = $label;
         $this->initVal = $initVal;
@@ -24,7 +25,8 @@ abstract class Input {
      *  renders a row in the form for this input. All inputs have a label on the left, and an area on the right where the actual
      *  html form element is displayed (such as a text box, radio button, select, etc)
      */
-    public function render(): string {
+    public function render(): string 
+    {
         return '<div>'
             . '<label for="' . $this->name . '">' . $this->label . '</label>'
             . $this->renderSetting()
@@ -34,8 +36,10 @@ abstract class Input {
     /**
      * returns the current value managed by this input
      */
-    public function getValue(): string {
-       if(isset($_POST[$this->name])) {
+    public function getValue(): string 
+    {
+       if(isset($_POST[$this->name])) 
+       {
             return $_POST[$this->name];
        }
        return $this->initVal;
