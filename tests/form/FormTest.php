@@ -5,36 +5,41 @@ include_once 'src/form/Form.php';
 
 use PHPUnit\Framework\TestCase;
 
-final class FormTest extends TestCase {
+final class FormTest extends TestCase 
+{
+
+    private Form $form;
+
+    protected function setUp(): void
+    {
+        $this->form = new Form();
+    }
     
-    public function testValidateFormWhenFieldIsInvalid() {
-        $arg = new Form();
+    public function testValidateFormWhenFieldIsInvalid() 
+    {
 
         $nameInput = new TextInput("name", "Name", "");
-        $arg->addInput($nameInput);
+        $this->form->addInput($nameInput);
 
-        $this->assertFalse($arg->validate());
-        $this->assertSame($nameInput->getValue(), $arg->getValue($nameInput->name()));
+        $this->assertFalse($this->form->validate());
+        $this->assertSame($nameInput->getValue(), $this->form->getValue($nameInput->name()));
     }
 
-    public function testValidateFormWhenFieldIsValid() {
-        $arg = new Form();
-
+    public function testValidateFormWhenFieldIsValid() 
+    {
         $nameInput = new TextInput("name", "Name", "Jupiter");
         $emailInput = new TextInput("email", "Email", "jupiter@gmail.com");
-        $arg->addInput($nameInput);
-        $arg->addInput($emailInput);
+        $this->form->addInput($nameInput);
+        $this->form->addInput($emailInput);
         
-
-        $this->assertTrue($arg->validate());
-        $this->assertSame($nameInput->getValue(), $arg->getValue($nameInput->name()));
-        $this->assertSame($emailInput->getValue(), $arg->getValue($emailInput->name()));
+        $this->assertTrue($this->form->validate());
+        $this->assertSame($nameInput->getValue(), $this->form->getValue($nameInput->name()));
+        $this->assertSame($emailInput->getValue(), $this->form->getValue($emailInput->name()));
     }
 
-    public function testGetValueWhenKeyIsNotSet() {
-        $arg = new Form();
-        
-        $this->assertTrue($arg->validate());
-        $this->assertNull($arg->getValue("non-ecziste"));
+    public function testGetValueWhenKeyIsNotSet() 
+    {
+        $this->assertTrue($this->form->validate());
+        $this->assertNull($this->form->getValue("non-ecziste"));
     }
 }
