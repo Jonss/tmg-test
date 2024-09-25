@@ -1,14 +1,9 @@
-build:
-	docker build -t form-lib .
 
-stop:
-	docker stop form-example
+run:
+	docker-compose up --build -d
 
 remove: stop
-	docker rm form-example
-
-run: remove build
-	docker run -d -p 8080:80 --name form-example form-lib
+	docker-compose down
 
 test:
-	./vendor/bin/phpunit tests
+	./vendor/bin/phpunit tests	
