@@ -17,8 +17,9 @@ final class FormTest extends TestCase
     
     public function testValidateFormWhenFieldIsInvalid() 
     {
-
-        $nameInput = new TextInput("name", "Name", "");
+        $nameInput = new TextInput("name", "Name", "", "", [
+            "required" => true
+        ]);
         $this->form->addInput($nameInput);
 
         $this->assertFalse($this->form->validate());
