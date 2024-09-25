@@ -3,15 +3,19 @@ abstract class Input {
     protected $name;
     protected $label;
     protected $initVal;
+    protected $type;
+    protected $rules = [];
 
     abstract public function validate(): bool;
     abstract protected function renderSetting(): string;
 
-    public function __construct($name, $label, $initVal) 
+    public function __construct($name, $label, $initVal, $type = "", array $rules = []) 
     {
         $this->name = $name;
         $this->label = $label;
         $this->initVal = $initVal;
+        $this->type = $type ? $type : "text";
+        $this->rules = $rules;
     }
 
     /**
